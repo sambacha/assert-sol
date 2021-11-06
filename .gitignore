@@ -4,3 +4,7 @@ node_modules
 cache/
 build/
 dist/
+*.log
+*.error
+coverage/
+.cache
