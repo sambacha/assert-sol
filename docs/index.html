@@ -1,0 +1,179 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>assert-evm</title><meta name="description" content="Documentation for assert-evm"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">assert-evm</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> assert-evm</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#assert-ethers-chai" id="assert-ethers-chai" style="color: inherit; text-decoration: none;">
+  <h1>Assert Ethers Chai</h1>
+</a>
+<blockquote>
+<p>ethersjs compatible chai matchers, extracted from ethereum-waffle</p>
+</blockquote>
+<p>Before you can start using the matchers, you have to tell chai to use the solidity plugin:</p>
+<pre><code class="language-js"><span class="hl-0">import</span><span class="hl-1"> </span><span class="hl-2">chai</span><span class="hl-1"> </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&quot;chai&quot;</span><span class="hl-1">;</span><br/><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">solidity</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&quot;assert-ethers&quot;</span><span class="hl-1">;</span><br/><br/><span class="hl-2">chai</span><span class="hl-1">.</span><span class="hl-4">use</span><span class="hl-1">(</span><span class="hl-2">solidity</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#matchers" id="matchers" style="color: inherit; text-decoration: none;">
+  <h2>Matchers</h2>
+</a>
+
+<a href="#bigint" id="bigint" style="color: inherit; text-decoration: none;">
+  <h3>BigInt</h3>
+</a>
+<p>Testing equality of big numbers:</p>
+<pre><code class="language-js"><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-2">token</span><span class="hl-1">.</span><span class="hl-4">balanceOf</span><span class="hl-1">(</span><span class="hl-2">wallet</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">)).</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-4">equal</span><span class="hl-1">(</span><span class="hl-5">993</span><span class="hl-1">);</span>
+</code></pre>
+<p>Available matchers for BigNumbers are: equal, eq, above, gt, gte, below, lt, lte, least, most, within, closeTo.</p>
+<pre><code class="language-js"><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-2">BigNumber</span><span class="hl-1">.</span><span class="hl-4">from</span><span class="hl-1">(</span><span class="hl-5">100</span><span class="hl-1">)).</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-2">be</span><span class="hl-1">.</span><span class="hl-4">within</span><span class="hl-1">(</span><span class="hl-2">BigNumber</span><span class="hl-1">.</span><span class="hl-4">from</span><span class="hl-1">(</span><span class="hl-5">99</span><span class="hl-1">), </span><span class="hl-2">BigNumber</span><span class="hl-1">.</span><span class="hl-4">from</span><span class="hl-1">(</span><span class="hl-5">101</span><span class="hl-1">));</span><br/><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-2">BigNumber</span><span class="hl-1">.</span><span class="hl-4">from</span><span class="hl-1">(</span><span class="hl-5">100</span><span class="hl-1">)).</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-2">be</span><span class="hl-1">.</span><span class="hl-4">closeTo</span><span class="hl-1">(</span><span class="hl-2">BigNumber</span><span class="hl-1">.</span><span class="hl-4">from</span><span class="hl-1">(</span><span class="hl-5">101</span><span class="hl-1">), </span><span class="hl-5">10</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#emitting-events" id="emitting-events" style="color: inherit; text-decoration: none;">
+  <h3>Emitting events</h3>
+</a>
+<p>Testing what events were emitted with what arguments:</p>
+<pre><code class="language-js"><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-2">token</span><span class="hl-1">.</span><span class="hl-4">transfer</span><span class="hl-1">(</span><span class="hl-2">walletTo</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">, </span><span class="hl-5">7</span><span class="hl-1">))</span><br/><span class="hl-1">  .</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-4">emit</span><span class="hl-1">(</span><span class="hl-2">token</span><span class="hl-1">, </span><span class="hl-3">&#39;Transfer&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">  .</span><span class="hl-4">withArgs</span><span class="hl-1">(</span><span class="hl-2">wallet</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">, </span><span class="hl-2">walletTo</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">, </span><span class="hl-5">7</span><span class="hl-1">);</span>
+</code></pre>
+<blockquote>
+<p>Note: The matcher will match <code>indexed</code> event parameters of type <code>string</code> or <code>bytes</code> even if the expected argument is not hashed using <code>keccack256</code> first.</p>
+</blockquote>
+<p>Testing with indexed bytes or string parameters. These two examples are equivalent</p>
+<pre><code class="language-js"><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-2">contract</span><span class="hl-1">.</span><span class="hl-4">addAddress</span><span class="hl-1">(</span><span class="hl-3">&quot;street&quot;</span><span class="hl-1">, </span><span class="hl-3">&quot;city&quot;</span><span class="hl-1">))</span><br/><span class="hl-1">  .</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-4">emit</span><span class="hl-1">(</span><span class="hl-2">contract</span><span class="hl-1">, </span><span class="hl-3">&#39;AddAddress&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">  .</span><span class="hl-4">withArgs</span><span class="hl-1">(</span><span class="hl-3">&quot;street&quot;</span><span class="hl-1">, </span><span class="hl-3">&quot;city&quot;</span><span class="hl-1">);</span><br/><br/><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">hashedStreet</span><span class="hl-1"> \= </span><span class="hl-2">ethers</span><span class="hl-1">.</span><span class="hl-2">utils</span><span class="hl-1">.</span><span class="hl-4">keccak256</span><span class="hl-1">(</span><span class="hl-2">ethers</span><span class="hl-1">.</span><span class="hl-2">utils</span><span class="hl-1">.</span><span class="hl-4">toUtf8Bytes</span><span class="hl-1">(</span><span class="hl-3">&quot;street&quot;</span><span class="hl-1">));</span><br/><span class="hl-6">const</span><span class="hl-1"> </span><span class="hl-7">hashedCity</span><span class="hl-1"> \= </span><span class="hl-2">ethers</span><span class="hl-1">.</span><span class="hl-2">utils</span><span class="hl-1">.</span><span class="hl-4">keccak256</span><span class="hl-1">(</span><span class="hl-2">ethers</span><span class="hl-1">.</span><span class="hl-2">utils</span><span class="hl-1">.</span><span class="hl-4">toUtf8Bytes</span><span class="hl-1">(</span><span class="hl-3">&quot;city&quot;</span><span class="hl-1">));</span><br/><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-2">contract</span><span class="hl-1">.</span><span class="hl-4">addAddress</span><span class="hl-1">(</span><span class="hl-2">street</span><span class="hl-1">, </span><span class="hl-2">city</span><span class="hl-1">))</span><br/><span class="hl-1">  .</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-4">emit</span><span class="hl-1">(</span><span class="hl-2">contract</span><span class="hl-1">, </span><span class="hl-3">&#39;AddAddress&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">  .</span><span class="hl-4">withArgs</span><span class="hl-1">(</span><span class="hl-2">hashedStreet</span><span class="hl-1">, </span><span class="hl-2">hashedCity</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#called-on-contract" id="called-on-contract" style="color: inherit; text-decoration: none;">
+  <h3>Called on contract</h3>
+</a>
+<p>Testing if function was called on the provided contract:</p>
+<p>await token.balanceOf(wallet.address)</p>
+<pre><code class="language-js"><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-3">&#39;balanceOf&#39;</span><span class="hl-1">).</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-2">be</span><span class="hl-1">.</span><span class="hl-4">calledOnContract</span><span class="hl-1">(</span><span class="hl-2">token</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#called-on-contract-with-arguments" id="called-on-contract-with-arguments" style="color: inherit; text-decoration: none;">
+  <h3>Called on contract with arguments</h3>
+</a>
+<p>Testing if function with certain arguments was called on provided contract:</p>
+<pre><code class="language-js"><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-2">token</span><span class="hl-1">.</span><span class="hl-4">balanceOf</span><span class="hl-1">(</span><span class="hl-2">wallet</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">)</span><br/><br/><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-3">&#39;balanceOf&#39;</span><span class="hl-1">).</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-2">be</span><span class="hl-1">.</span><span class="hl-4">calledOnContractWith</span><span class="hl-1">(</span><span class="hl-2">token</span><span class="hl-1">, \[</span><span class="hl-2">wallet</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">\]);</span>
+</code></pre>
+
+<a href="#revert" id="revert" style="color: inherit; text-decoration: none;">
+  <h3>Revert</h3>
+</a>
+<p>Testing if transaction was reverted:</p>
+<pre><code class="language-js"><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-2">token</span><span class="hl-1">.</span><span class="hl-4">transfer</span><span class="hl-1">(</span><span class="hl-2">walletTo</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">, </span><span class="hl-5">1007</span><span class="hl-1">)).</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-2">be</span><span class="hl-1">.</span><span class="hl-2">reverted</span><span class="hl-1">;</span>
+</code></pre>
+
+<a href="#revert-with-message" id="revert-with-message" style="color: inherit; text-decoration: none;">
+  <h3>Revert with message</h3>
+</a>
+<p>Testing if transaction was reverted with certain message:</p>
+<pre><code class="language-js"><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-2">token</span><span class="hl-1">.</span><span class="hl-4">transfer</span><span class="hl-1">(</span><span class="hl-2">walletTo</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">, </span><span class="hl-5">1007</span><span class="hl-1">))</span><br/><span class="hl-1">  .</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-2">be</span><span class="hl-1">.</span><span class="hl-4">revertedWith</span><span class="hl-1">(</span><span class="hl-3">&#39;Insufficient funds&#39;</span><span class="hl-1">);</span>
+</code></pre>
+
+<a href="#change-ether-balance" id="change-ether-balance" style="color: inherit; text-decoration: none;">
+  <h3>Change ether balance</h3>
+</a>
+<p>Testing whether the transaction changes the balance of the account:</p>
+<pre><code class="language-js"><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-4">expect</span><span class="hl-1">(() \</span><span class="hl-6">=&gt;</span><span class="hl-1"> </span><span class="hl-2">wallet</span><span class="hl-1">.</span><span class="hl-4">sendTransaction</span><span class="hl-1">({</span><span class="hl-2">to:</span><span class="hl-1"> </span><span class="hl-2">walletTo</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">, </span><span class="hl-2">value:</span><span class="hl-1"> </span><span class="hl-5">200</span><span class="hl-1">}))</span><br/><span class="hl-1">  .</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-4">changeEtherBalance</span><span class="hl-1">(</span><span class="hl-2">walletTo</span><span class="hl-1">, </span><span class="hl-5">200</span><span class="hl-1">);</span><br/><br/><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-4">expect</span><span class="hl-1">(</span><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-2">wallet</span><span class="hl-1">.</span><span class="hl-4">sendTransaction</span><span class="hl-1">({</span><span class="hl-2">to:</span><span class="hl-1"> </span><span class="hl-2">walletTo</span><span class="hl-1">.</span><span class="hl-2">address</span><span class="hl-1">, </span><span class="hl-2">value:</span><span class="hl-1"> </span><span class="hl-5">200</span><span class="hl-1">}))</span><br/><span class="hl-1">  .</span><span class="hl-2">to</span><span class="hl-1">.</span><span class="hl-4">changeEtherBalance</span><span class="hl-1">(</span><span class="hl-2">walletTo</span><span class="hl-1">, </span><span class="hl-5">200</span><span class="hl-1">);</span>
+</code></pre>
+<p><code>expect</code> for <code>changeEtherBalance</code> gets one of the following parameters:</p>
+<blockquote>
+<p>Note <code>changeEtherBalance</code> won’t work if there is more than one transaction mined in the block.</p>
+</blockquote>
+<p>The transaction call should be passed to the <code>expect</code> as a callback (we need to check the balance before the call) or as a transaction response.</p>
+<p>The matcher can accept numbers, strings and BigNumbers as a balance change, while the account should be specified either as a Wallet or a Contract.</p>
+<p><code>changeEtherBalance</code> ignores transaction fees by default:</p>
+<p>// Default behavior
+await expect(await wallet.sendTransaction({to: walletTo.address, value: 200}))
+  .to.changeEtherBalance(wallet, -200);</p>
+<p>// To include the transaction fee use:
+await expect(await wallet.sendTransaction({to: walletTo.address, gasPrice: 1, value: 200}))
+  .to.changeEtherBalance(wallet, -21200, {includeFee: true});</p>
+<p>Note</p>
+<p><code>changeEtherBalance</code> calls should not be chained. If you need to check changes of the balance for multiple accounts, you should use the <code>changeEtherBalances</code> matcher.</p>
+
+<a href="#change-ether-balance-multiple-accounts" id="change-ether-balance-multiple-accounts" style="color: inherit; text-decoration: none;">
+  <h3>Change ether balance (multiple accounts)</h3>
+</a>
+<p>Testing whether the transaction changes balance of multiple accounts:</p>
+<p>await expect(() =&gt; wallet.sendTransaction({to: walletTo.address, value: 200}))
+  .to.changeEtherBalances([wallet, walletTo], [-200, 200]);</p>
+<p>await expect(await wallet.sendTransaction({to: walletTo.address, value: 200}))
+  .to.changeEtherBalances([wallet, walletTo], [-200, 200]);</p>
+<p>Note</p>
+<p><code>changeEtherBalances</code> calls won’t work if there is more than one transaction mined in the block.</p>
+
+<a href="#change-token-balance" id="change-token-balance" style="color: inherit; text-decoration: none;">
+  <h3>Change token balance</h3>
+</a>
+<p>Testing whether the transfer changes the balance of the account:</p>
+<p>await expect(() =&gt; token.transfer(walletTo.address, 200))
+  .to.changeTokenBalance(token, walletTo, 200);</p>
+<p>await expect(() =&gt; token.transferFrom(wallet.address, walletTo.address, 200))
+  .to.changeTokenBalance(token, walletTo, 200);</p>
+<p>Note</p>
+<p>The transfer call should be passed to the <code>expect</code> as a callback (we need to check the balance before the call).</p>
+<p>The matcher can accept numbers, strings and BigNumbers as a balance change, while the account should be specified either as a Wallet or a Contract.</p>
+<p>Note</p>
+<p><code>changeTokenBalance</code> calls should not be chained. If you need to check changes of the balance for multiple accounts, you should use the <code>changeTokenBalances</code> matcher.</p>
+
+<a href="#change-token-balance-multiple-accounts" id="change-token-balance-multiple-accounts" style="color: inherit; text-decoration: none;">
+  <h3>Change token balance (multiple accounts)</h3>
+</a>
+<p>Testing whether the transfer changes balance for multiple accounts:</p>
+<p>await expect(() =&gt; token.transfer(walletTo.address, 200))
+  .to.changeTokenBalances(token, [wallet, walletTo], [-200, 200]);</p>
+
+<a href="#proper-address" id="proper-address" style="color: inherit; text-decoration: none;">
+  <h3>Proper address</h3>
+</a>
+<p>Testing if a string is a proper address:</p>
+<p>expect(&#39;0x28FAA621c3348823D6c6548981a19716bcDc740e&#39;).to.be.properAddress;</p>
+
+<a href="#proper-private-key" id="proper-private-key" style="color: inherit; text-decoration: none;">
+  <h3>Proper private key</h3>
+</a>
+<p>Testing if a string is a proper private key:</p>
+<p>expect(&#39;0x706618637b8ca922f6290ce1ecd4c31247e9ab75cf0530a0ac95c0332173d7c5&#39;).to.be.properPrivateKey;</p>
+
+<a href="#proper-hex" id="proper-hex" style="color: inherit; text-decoration: none;">
+  <h3>Proper hex[</h3>
+</a>
+<p>Testing if a string is a proper hex value of given length:</p>
+<p>expect(&#39;0x70&#39;).to.be.properHex(2);</p>
+
+<a href="#hex-equal" id="hex-equal" style="color: inherit; text-decoration: none;">
+  <h3>Hex Equal</h3>
+</a>
+<p>Testing if a string is a proper hex with value equal to the given hex value. Case insensitive and strips leading zeros:</p>
+<p>expect(&#39;0x00012AB&#39;).to.hexEqual(&#39;0x12ab&#39;);</p>
+
+<a href="#change-balance" id="change-balance" style="color: inherit; text-decoration: none;">
+  <h3>Change balance</h3>
+</a>
+<p>Deprecated since version 3.1.2: Use <code>changeEtherBalance()</code> instead.</p>
+<p>Testing whether the transaction changes the balance of the account:</p>
+<p>await expect(() =&gt; wallet.sendTransaction({to: walletTo.address, gasPrice: 0, value: 200}))
+  .to.changeBalance(walletTo, 200);</p>
+<p>await expect(await wallet.sendTransaction({to: walletTo.address, gasPrice: 0, value: 200}))
+  .to.changeBalance(walletTo, 200);</p>
+<p><code>expect</code> for <code>changeBalance</code> gets one of the following parameters:</p>
+<p>Note</p>
+<p><code>changeBalance</code> won’t work if there is more than one transaction mined in the block.</p>
+<p>The transaction call should be passed to the <code>expect</code> as a callback (we need to check the balance before the call) or as a transaction response.</p>
+<p>The matcher can accept numbers, strings and BigNumbers as a balance change, while the account should be specified either as a Wallet or a Contract.</p>
+<p>Note</p>
+<p><code>changeBalance</code> calls should not be chained. If you need to check changes of the balance for multiple accounts, you should use the <code>changeBalances</code> matcher.</p>
+
+<a href="#change-balance-multiple-accounts" id="change-balance-multiple-accounts" style="color: inherit; text-decoration: none;">
+  <h2>Change balance (multiple accounts)</h2>
+</a>
+<p>Deprecated since version 3.1.2: Use <code>changeEtherBalances()</code> instead.</p>
+<p>Testing whether the transaction changes balance of multiple accounts:</p>
+<p>await expect(() =&gt; wallet.sendTransaction({to: walletTo.address, gasPrice: 0, value: 200}))
+  .to.changeBalances([wallet, walletTo], [-200, 200]);</p>
+<p>await expect(await wallet.sendTransaction({to: walletTo.address, gasPrice: 0, value: 200}))
+  .to.changeBalances([wallet, walletTo], [-200, 200]);</p>
+<p>Note</p>
+<p><code>changeBalances</code> calls won’t work if there is more than one transaction mined in the block.</p>
+
+<a href="#acknowledgements" id="acknowledgements" style="color: inherit; text-decoration: none;">
+  <h2>Acknowledgements</h2>
+</a>
+<p>Thanks to <code>ethereum-waffle</code> which this library was originally extracted from</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Modules</a></li><li class=" tsd-kind-module"><a href="modules/index.html">index</a></li><li class=" tsd-kind-module"><a href="modules/matchers_bigNumber.html">matchers/big<wbr/>Number</a></li><li class=" tsd-kind-module"><a href="modules/matchers_changeTokenBalance.html">matchers/change<wbr/>Token<wbr/>Balance</a></li><li class=" tsd-kind-module"><a href="modules/matchers_changeTokenBalances.html">matchers/change<wbr/>Token<wbr/>Balances</a></li><li class=" tsd-kind-module"><a href="modules/matchers_emit.html">matchers/emit</a></li><li class=" tsd-kind-module"><a href="modules/matchers_properAddress.html">matchers/proper<wbr/>Address</a></li><li class=" tsd-kind-module"><a href="modules/matchers_properHex.html">matchers/proper<wbr/>Hex</a></li><li class=" tsd-kind-module"><a href="modules/matchers_properPrivateKey.html">matchers/proper<wbr/>Private<wbr/>Key</a></li><li class=" tsd-kind-module"><a href="modules/matchers_reverted.html">matchers/reverted</a></li><li class=" tsd-kind-module"><a href="modules/matchers_revertedWith.html">matchers/reverted<wbr/>With</a></li><li class=" tsd-kind-module"><a href="modules/types.html">types</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
